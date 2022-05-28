@@ -1,15 +1,30 @@
-import './App.css';
+import Header from "./components/navbar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Student from "./components/students";
+import ContactUs from "./components/contactus";
+import Detail from "./components/details"
+import Home from "./components/home";
+import Editstudent from "./components/edit";
+import AddStudent from "./components/addstudents";
 
 function App() {
   return (
-    <div className="App">
-      <h1 className='text'>Pure Components</h1>
-      <p className='text'>A React component is considered pure if it renders the same output for the same state and props.In the case of Pure Components, the React components do not re-render blindly without considering the updated values of React “props” and “state”. If updated values are the same as previous values, render is not triggered.</p>
-      <h1 className='text'>High order Components</h1>
-      <p className='text'> A higher-order component is a function that takes a component and returns a new component. <br /> <br /> Example:</p>
-      <p style={{color: 'brown'}}>const EnhancedComponent = higherOrderComponent(WrappedComponent);</p>
-    
-    </div>
+    <Detail>
+      <div className="App">
+        <Router>
+          <Header />
+
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/student" element={<Student />} />
+            <Route path="/student/add/:id" element={<AddStudent />} />
+            <Route path="/student/edit/:id" element={<Editstudent />} />
+            <Route path="/contact" element={<ContactUs />} />
+          </Routes>
+        </Router>
+      </div>
+    </Detail>
   );
 }
 
